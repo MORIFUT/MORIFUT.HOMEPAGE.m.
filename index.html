@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MORIFUT | 岩手で気軽にフットサル・サッカーをするなら</title>
+<style>
+/* ===== BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --white:#ffffff;
+  --bg:#f4f6f9;
+  --bg2:#eef1f6;
+  --surface:#ffffff;
+  --navy:#0c1a35;
+  --blue:#1140a6;
+  --mid:#1a56db;
+  --blue-light:#e8eefa;
+  --accent:#1a56db;
+  --accent2:#3b82f6;
+  --green:#06C755;
+  --text:#1a2332;
+  --text2:#4a5568;
+  --text3:#8898aa;
+  --border:#dde3ed;
+  --border2:#c8d0de;
+  --shadow:0 2px 12px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.12);
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP','Meiryo',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  line-height:1.7;
+}
+a{text-decoration:none;color:inherit;}
+
+/* ===== PAGES ===== */
+.pg{display:none;min-height:100vh;}
+.pg.on{display:block;}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 1px 8px rgba(0,0,0,.06);
+}
+.logo{cursor:pointer;user-select:none;}
+.logo-mark{
+  font-size:20px;font-weight:900;letter-spacing:3px;
+  color:var(--navy);
+}
+.logo-mark span{color:var(--mid);}
+.logo-sub{font-size:9px;letter-spacing:2px;color:var(--text3);display:block;margin-top:-3px;}
+.hdr-r{display:flex;align-items:center;gap:6px;}
+.hdr-nav{display:flex;gap:2px;}
+.hdr-nav button{
+  background:none;border:none;color:var(--text2);
+  font-size:12px;font-weight:600;padding:8px 11px;border-radius:6px;
+  cursor:pointer;transition:.2s;letter-spacing:.3px;
+}
+.hdr-nav button:hover{background:var(--bg);color:var(--navy);}
+.hdr-line{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--green);color:#fff;border:none;
+  padding:8px 14px;border-radius:6px;
+  font-size:12px;font-weight:700;cursor:pointer;transition:.2s;
+  letter-spacing:.3px;white-space:nowrap;flex-shrink:0;
+}
+.hdr-line:hover{opacity:.88;transform:translateY(-1px);}
+.hdr-adm{
+  background:none;border:1px solid var(--border2);
+  color:var(--text3);font-size:11px;
+  padding:7px 12px;border-radius:6px;cursor:pointer;transition:.2s;font-weight:600;
+}
+.hdr-adm:hover{border-color:var(--mid);color:var(--mid);}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:90px 24px 72px;
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg, #0c1a35 0%, #0f2660 45%, #0a1e50 100%);
+}
+.hero-pitch{
+  position:absolute;inset:0;z-index:0;
+  pointer-events:none;opacity:.04;
+}
+.hero-pitch svg{width:100%;height:100%;}
+.hero-stripes{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(
+    155deg,transparent 0,transparent 80px,
+    rgba(255,255,255,.015) 80px,rgba(255,255,255,.015) 160px
+  );
+}
+.hero-ball-l{
+  position:absolute;left:-80px;bottom:-80px;z-index:0;
+  width:300px;height:300px;opacity:.05;pointer-events:none;
+}
+.hero-ball-r{
+  position:absolute;right:-60px;top:-60px;z-index:0;
+  width:380px;height:380px;opacity:.04;pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2;}
+.hero-pill{
+  display:inline-block;
+  background:rgba(59,130,246,.18);
+  border:1px solid rgba(59,130,246,.35);
+  color:#93c5fd;
+  font-size:11px;font-weight:600;letter-spacing:3px;
+  padding:5px 18px;border-radius:20px;margin-bottom:24px;
+  text-transform:uppercase;
+}
+.hero-brand{
+  font-size:clamp(60px,12vw,110px);
+  font-weight:900;letter-spacing:6px;line-height:1;
+  color:#fff;margin-bottom:0;
+}
+.hero-brand span{color:#60a5fa;}
+.hero-tagline{font-size:10px;letter-spacing:5px;color:rgba(255,255,255,.3);margin-bottom:28px;text-transform:uppercase;}
+.hero-catch{
+  font-size:clamp(18px,2.8vw,26px);
+  font-weight:800;line-height:1.55;
+  color:#fff;margin-bottom:10px;
+}
+.hero-catch span{color:#93c5fd;}
+.hero-desc{font-size:14px;color:rgba(255,255,255,.6);line-height:1.9;margin-bottom:38px;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:52px;}
+.btn-hero-blue{
+  background:var(--mid);color:#fff;border:none;
+  padding:15px 36px;font-size:14px;font-weight:700;
+  border-radius:8px;cursor:pointer;letter-spacing:.5px;
+  box-shadow:0 4px 20px rgba(26,86,219,.4);transition:.25s;
+}
+.btn-hero-blue:hover{background:#1e63f5;transform:translateY(-2px);box-shadow:0 8px 28px rgba(26,86,219,.5);}
+.btn-hero-line{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--green);color:#fff;border:none;
+  padding:15px 32px;font-size:14px;font-weight:700;
+  border-radius:8px;cursor:pointer;letter-spacing:.5px;
+  box-shadow:0 4px 18px rgba(6,199,85,.3);transition:.25s;
+}
+.btn-hero-line:hover{opacity:.88;transform:translateY(-2px);}
+.btn-hero-ghost{
+  background:transparent;color:rgba(255,255,255,.7);
+  border:1px solid rgba(255,255,255,.25);
+  padding:14px 30px;font-size:14px;font-weight:600;
+  border-radius:8px;cursor:pointer;transition:.25s;
+}
+.btn-hero-ghost:hover{border-color:rgba(255,255,255,.55);color:#fff;}
+.hero-stats{
+  display:flex;border:1px solid rgba(255,255,255,.1);border-radius:10px;
+  overflow:hidden;background:rgba(255,255,255,.05);max-width:460px;margin:0 auto;
+}
+.hst{padding:18px 26px;text-align:center;border-right:1px solid rgba(255,255,255,.1);flex:1;}
+.hst:last-child{border-right:none;}
+.hst-n{font-size:24px;font-weight:900;color:#60a5fa;}
+.hst-l{font-size:10px;color:rgba(255,255,255,.45);letter-spacing:2px;margin-top:3px;text-transform:uppercase;}
+
+/* ===== SECTIONS ===== */
+.section{max-width:1060px;margin:0 auto;padding:80px 24px;}
+.sec-label{font-size:10px;letter-spacing:4px;color:var(--mid);font-weight:700;margin-bottom:8px;text-transform:uppercase;}
+.sec-title{font-size:clamp(24px,3.5vw,36px);font-weight:900;line-height:1.2;margin-bottom:10px;color:var(--navy);letter-spacing:-.5px;}
+.sec-title span{color:var(--mid);}
+.sec-bar{width:32px;height:3px;background:var(--mid);border-radius:2px;margin-bottom:20px;}
+.sec-desc{font-size:14px;color:var(--text2);line-height:1.85;max-width:520px;}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:44px;}
+.about-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:28px 24px;transition:.25s;
+}
+.about-card:hover{border-color:var(--mid);box-shadow:var(--shadow);}
+.about-num{font-size:10px;font-weight:800;letter-spacing:3px;color:var(--mid);margin-bottom:14px;text-transform:uppercase;}
+.about-tag{
+  display:inline-block;background:var(--blue-light);
+  color:var(--mid);font-size:10px;font-weight:700;
+  letter-spacing:1px;padding:3px 10px;border-radius:4px;
+  margin-bottom:12px;text-transform:uppercase;
+}
+.about-card h3{font-size:17px;font-weight:800;margin-bottom:8px;color:var(--navy);line-height:1.35;}
+.about-card p{font-size:13px;color:var(--text2);line-height:1.85;}
+
+/* ===== SCHEDULE ===== */
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:40px;}
+.ev-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;transition:.25s;cursor:pointer;
+}
+.ev-card:hover{border-color:var(--mid);box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+.ev-card-top{
+  background:linear-gradient(90deg,var(--navy),var(--blue));
+  padding:10px 16px;display:flex;justify-content:space-between;align-items:center;
+}
+.ev-sport-label{font-size:11px;font-weight:700;color:#fff;letter-spacing:2px;text-transform:uppercase;}
+.ev-date-pill{background:rgba(255,255,255,.18);color:#fff;font-size:11px;padding:2px 10px;border-radius:10px;}
+.ev-body{padding:18px 18px 14px;}
+.ev-name{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:14px;line-height:1.25;}
+.ev-metas{display:flex;flex-direction:column;gap:7px;margin-bottom:16px;}
+.ev-meta{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--text2);}
+.ev-meta-ico{
+  width:26px;height:26px;background:var(--bg);border:1px solid var(--border);
+  border-radius:6px;display:flex;align-items:center;justify-content:center;
+  font-size:11px;flex-shrink:0;
+}
+.cap-area{margin-bottom:16px;}
+.cap-top{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:5px;}
+.cap-top strong{color:var(--navy);font-weight:700;}
+.cap-track{height:4px;background:var(--bg2);border-radius:2px;}
+.cap-fill{height:100%;border-radius:2px;transition:.5s;}
+.cap-fill.ok{background:linear-gradient(90deg,var(--mid),var(--accent2));}
+.cap-fill.warn{background:#f59e0b;}
+.cap-fill.full{background:#ef4444;}
+.ev-foot{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-top:1px solid var(--border);background:var(--bg);}
+.rem-txt{font-size:12px;font-weight:700;}
+.rem-txt.ok{color:var(--mid);}.rem-txt.warn{color:#d97706;}.rem-txt.full{color:#dc2626;}
+.ev-book-btn{
+  background:var(--mid);color:#fff;border:none;
+  font-size:12px;font-weight:700;padding:8px 18px;
+  border-radius:6px;cursor:pointer;transition:.2s;letter-spacing:.3px;
+}
+.ev-book-btn:hover{background:#1e63f5;}
+
+/* ===== SNS ===== */
+.sns-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:40px;}
+.sns-card{
+  display:flex;align-items:center;gap:14px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:18px 16px;
+  text-decoration:none;color:var(--text);transition:.2s;
+}
+.sns-card:hover{border-color:var(--mid);box-shadow:var(--shadow);transform:translateY(-1px);}
+.sns-ico{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sns-name{font-size:14px;font-weight:700;color:var(--navy);}
+.sns-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+
+/* ===== PRICE ===== */
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:40px;margin-bottom:16px;}
+.price-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:32px 28px;position:relative;transition:.2s;
+}
+.price-card.featured{border-color:var(--mid);box-shadow:0 0 0 3px rgba(26,86,219,.08);}
+.price-type-lbl{font-size:10px;font-weight:800;letter-spacing:3px;color:var(--mid);margin-bottom:8px;text-transform:uppercase;}
+.price-name{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:16px;}
+.price-yen{font-size:48px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-2px;}
+.price-unit{font-size:12px;color:var(--text3);margin-top:4px;margin-bottom:20px;}
+.price-hr{height:1px;background:var(--border);margin-bottom:18px;}
+.price-ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.price-ul li{font-size:13px;color:var(--text2);display:flex;align-items:flex-start;gap:9px;line-height:1.55;}
+.price-ul li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--mid);flex-shrink:0;margin-top:8px;}
+.price-badge{
+  position:absolute;top:18px;right:18px;
+  background:var(--mid);color:#fff;
+  font-size:10px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.5px;
+}
+.discount-box{
+  background:linear-gradient(90deg,#fffbeb,#fef9ec);
+  border:1px solid #fde68a;border-radius:10px;
+  padding:18px 22px;display:flex;align-items:center;gap:16px;margin-bottom:12px;
+}
+.disc-icon{font-size:22px;flex-shrink:0;}
+.disc-h{font-size:14px;font-weight:800;color:#92400e;margin-bottom:3px;}
+.disc-p{font-size:13px;color:#78350f;line-height:1.6;}
+.cancel-box{
+  background:#fff5f5;border:1px solid #fecaca;
+  border-radius:10px;padding:16px 22px;
+}
+.cancel-box h4{font-size:11px;font-weight:800;color:#dc2626;letter-spacing:1px;margin-bottom:5px;text-transform:uppercase;}
+.cancel-box p{font-size:13px;color:#7f1d1d;line-height:1.7;}
+
+/* ===== RULES ===== */
+.rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:40px;}
+.rule-col{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;}
+.rule-col-h{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--mid);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);text-transform:uppercase;}
+.rule-items{display:flex;flex-direction:column;gap:10px;}
+.rule-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text2);line-height:1.6;}
+.r-num{min-width:22px;height:22px;background:var(--blue-light);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--mid);flex-shrink:0;margin-top:1px;}
+.r-dot{width:4px;height:4px;border-radius:50%;background:var(--border2);flex-shrink:0;margin-top:8px;}
+
+/* ===== FAQ ===== */
+.faq-wrap{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:40px;background:var(--surface);}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-item:last-child{border-bottom:none;}
+.faq-q{
+  width:100%;background:none;border:none;color:var(--text);
+  text-align:left;display:flex;justify-content:space-between;align-items:center;
+  padding:18px 22px;gap:14px;cursor:pointer;font-size:14px;font-weight:600;transition:.2s;
+}
+.faq-q:hover{background:var(--bg);}
+.faq-q-l{display:flex;align-items:flex-start;gap:12px;}
+.faq-badge{font-size:10px;font-weight:800;color:var(--mid);background:var(--blue-light);padding:2px 8px;border-radius:4px;flex-shrink:0;margin-top:3px;}
+.faq-arr{font-size:11px;color:var(--text3);transition:.3s;flex-shrink:0;}
+.faq-item.open .faq-arr{transform:rotate(180deg);}
+.faq-a{display:none;padding:0 22px 18px 46px;font-size:13px;color:var(--text2);line-height:1.85;}
+.faq-item.open .faq-a{display:block;}
+
+/* ===== CTA ===== */
+.cta-sec{
+  background:linear-gradient(135deg,var(--navy) 0%,#0f2660 100%);
+  padding:88px 24px;text-align:center;
+}
+.cta-inner{max-width:560px;margin:0 auto;}
+.cta-lbl{font-size:10px;letter-spacing:4px;color:#93c5fd;font-weight:700;margin-bottom:12px;text-transform:uppercase;}
+.cta-h{font-size:clamp(20px,3.5vw,32px);font-weight:900;line-height:1.35;margin-bottom:12px;color:#fff;}
+.cta-p{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:30px;line-height:1.85;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+/* ===== FOOTER ===== */
+footer{background:var(--navy);padding:52px 5% 28px;}
+.ft-inner{max-width:1060px;margin:0 auto;}
+.ft-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:40px;}
+.ft-logo-m{font-size:18px;font-weight:900;letter-spacing:3px;color:#fff;}
+.ft-logo-m span{color:#60a5fa;}
+.ft-logo-s{font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.28);display:block;margin-top:1px;}
+.ft-brand-p{font-size:13px;color:rgba(255,255,255,.38);line-height:1.8;max-width:240px;margin-top:10px;}
+.ft-cols{display:flex;gap:40px;flex-wrap:wrap;}
+.ft-col h4{font-size:10px;font-weight:800;letter-spacing:3px;color:rgba(255,255,255,.5);margin-bottom:12px;text-transform:uppercase;}
+.ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.35);margin-bottom:8px;cursor:pointer;transition:.2s;}
+.ft-col a:hover{color:#fff;}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.ft-copy{font-size:11px;color:rgba(255,255,255,.2);}
+.ft-sns{display:flex;gap:7px;}
+.ftsn{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:.2s;}
+.ftsn:hover{transform:translateY(-2px);}
+
+/* ===== SUB PAGE ===== */
+.sub-wrap{padding-top:60px;min-height:100vh;background:var(--bg);}
+.sub-hero{
+  background:linear-gradient(135deg,var(--navy),#0f2660);
+  padding:40px 5%;border-bottom:1px solid var(--border);
+}
+.sub-back{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.7);font-size:12px;font-weight:600;
+  padding:7px 15px;border-radius:6px;cursor:pointer;transition:.2s;margin-bottom:18px;
+}
+.sub-back:hover{background:rgba(255,255,255,.18);color:#fff;}
+.sub-hero h2{font-size:24px;font-weight:900;color:#fff;margin-bottom:4px;}
+.sub-hero p{font-size:13px;color:rgba(255,255,255,.6);}
+.sub-body{max-width:940px;margin:0 auto;padding:36px 24px 80px;}
+
+/* ===== BOOKING FORM ===== */
+.bk-body{max-width:620px;margin:0 auto;padding:36px 24px 80px;}
+.steps-row{display:flex;align-items:center;max-width:360px;margin:0 auto 36px;}
+.sdot{width:32px;height:32px;border-radius:50%;background:var(--bg2);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--text3);flex-shrink:0;transition:.3s;}
+.sdot.on{background:var(--mid);border-color:var(--mid);color:#fff;}
+.sdot.dn{background:var(--mid);border-color:var(--mid);color:#fff;}
+.s-line{flex:1;height:2px;background:var(--border2);}
+.s-line.dn{background:var(--mid);}
+.fc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:12px;box-shadow:var(--shadow);}
+.fc-ttl{font-size:10px;font-weight:800;letter-spacing:3px;color:var(--mid);margin-bottom:16px;text-transform:uppercase;}
+.fg{margin-bottom:14px;}
+.fg:last-child{margin-bottom:0;}
+.fl{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:7px;display:block;letter-spacing:.3px;}
+.req{color:#dc2626;margin-left:3px;}
+.fi{
+  width:100%;background:var(--bg);border:1px solid var(--border);
+  color:var(--text);padding:11px 14px;border-radius:8px;font-size:14px;outline:none;transition:.2s;
+}
+.fi:focus{border-color:var(--mid);background:#fff;box-shadow:0 0 0 3px rgba(26,86,219,.1);}
+.fi::placeholder{color:var(--text3);}
+.fi option{background:#fff;}
+textarea.fi{resize:vertical;min-height:72px;font-family:inherit;line-height:1.6;}
+.stepper{display:inline-flex;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.sp-b{width:44px;height:44px;background:#fff;border:none;color:var(--mid);font-size:20px;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);}
+.sp-b:last-child{border-right:none;border-left:1px solid var(--border);}
+.sp-b:hover{background:var(--blue-light);}
+.sp-v{width:56px;text-align:center;font-size:20px;font-weight:800;color:var(--navy);background:none;}
+.tg-grp{display:flex;gap:6px;flex-wrap:wrap;}
+.tg-btn{background:var(--bg);border:1px solid var(--border);color:var(--text2);padding:9px 16px;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;}
+.tg-btn:hover{border-color:var(--mid);color:var(--mid);}
+.tg-btn.on{background:var(--blue-light);border-color:var(--mid);color:var(--mid);font-weight:700;}
+.prow{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:10px;}
+.prow-lbl{font-size:10px;font-weight:800;letter-spacing:3px;color:var(--mid);margin-bottom:14px;text-transform:uppercase;}
+.prow-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:460px){.prow-grid{grid-template-columns:1fr;}}
+.rk-list{display:flex;flex-direction:column;gap:6px;}
+.rk-row{
+  display:flex;align-items:center;gap:12px;
+  background:#fff;border:1px solid var(--border);
+  border-radius:8px;padding:11px 13px;cursor:pointer;transition:.2s;
+}
+.rk-row:hover{border-color:var(--mid);}
+.rk-row.on{border-color:var(--mid);background:var(--blue-light);}
+.rk-badge{width:40px;height:40px;border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+.rk-rl{font-size:7px;font-weight:800;letter-spacing:1px;}
+.rk-rn{font-size:16px;font-weight:900;line-height:1.1;}
+.rk-info{flex:1;min-width:0;}
+.rk-nm{font-size:13px;font-weight:800;color:var(--navy);}
+.rk-lb{font-size:10px;color:var(--text3);}
+.rk-st{font-size:11px;margin:2px 0;}
+.rk-dc{font-size:11px;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rk-chk{font-size:16px;color:var(--mid);opacity:0;transition:.2s;flex-shrink:0;}
+.rk-row.on .rk-chk{opacity:1;}
+.pp-card{background:var(--blue-light);border:1px solid rgba(26,86,219,.2);border-radius:8px;padding:16px 18px;}
+.pp-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:7px;}
+.pp-row:last-child{margin-bottom:0;padding-top:9px;border-top:1px solid rgba(26,86,219,.15);}
+.pp-k{color:var(--text2);}
+.pp-v{font-weight:700;color:var(--navy);}
+.pp-row.tot .pp-v{color:var(--mid);font-size:22px;font-weight:900;}
+.pp-disc{color:#d97706;font-size:12px;font-weight:700;}
+.cf-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:12px;box-shadow:var(--shadow);}
+.cf-ttl{font-size:10px;font-weight:800;letter-spacing:3px;color:var(--mid);margin-bottom:16px;text-transform:uppercase;}
+.cf-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);gap:14px;}
+.cf-row:last-child{border-bottom:none;}
+.cf-k{font-size:12px;color:var(--text3);min-width:80px;flex-shrink:0;}
+.cf-v{font-size:13px;font-weight:700;color:var(--navy);text-align:right;line-height:1.65;}
+.btn-p{width:100%;background:var(--mid);color:#fff;border:none;padding:15px;font-size:14px;font-weight:700;border-radius:8px;cursor:pointer;letter-spacing:.3px;transition:.2s;box-shadow:0 4px 14px rgba(26,86,219,.3);}
+.btn-p:hover{background:#1e63f5;transform:translateY(-1px);}
+.btn-s{width:100%;background:#fff;color:var(--text2);border:1px solid var(--border);padding:14px;font-size:13px;font-weight:600;border-radius:8px;cursor:pointer;transition:.2s;}
+.btn-s:hover{border-color:var(--mid);color:var(--mid);}
+.btn-pair{display:flex;gap:10px;margin-top:10px;}
+.btn-pair .btn-s{flex:1;}.btn-pair .btn-p{flex:2;}
+
+/* SUCCESS */
+.suc-pg{text-align:center;padding:56px 20px;}
+.suc-circle{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,var(--mid),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;color:#fff;margin:0 auto 22px;
+  box-shadow:0 8px 24px rgba(26,86,219,.3);
+  animation:pop .5s ease;
+}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.suc-h{font-size:26px;font-weight:900;color:var(--navy);margin-bottom:6px;}
+.suc-tag{display:inline-block;background:linear-gradient(90deg,var(--mid),var(--accent2));color:#fff;font-size:13px;font-weight:700;padding:5px 18px;border-radius:20px;margin-bottom:14px;}
+.suc-p{font-size:14px;color:var(--text2);margin-bottom:28px;line-height:1.9;}
+.suc-det{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:18px;max-width:400px;margin:0 auto 18px;text-align:left;}
+.suc-note{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:14px 18px;max-width:400px;margin:0 auto 24px;text-align:left;font-size:12px;color:#78350f;line-height:1.7;}
+.suc-note strong{display:block;font-size:11px;font-weight:800;color:#92400e;letter-spacing:1px;margin-bottom:4px;text-transform:uppercase;}
+
+/* ===== RANK PAGE ===== */
+.rk-pg-inner{max-width:680px;margin:0 auto;padding:40px 24px 80px;}
+.rk-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:10px;box-shadow:var(--shadow);}
+.rk-card-hd{padding:16px 20px;display:flex;align-items:center;gap:14px;}
+.rk-card-badge{width:48px;height:48px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+.rk-card-nm{font-size:18px;font-weight:900;color:var(--navy);}
+.rk-card-sl{font-size:11px;color:var(--text3);}
+.rk-card-st{font-size:14px;margin-top:2px;}
+.rk-card-bd{padding:0 20px 16px;}
+.rk-card-ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.rk-card-ul li{font-size:13px;color:var(--text2);padding-left:14px;position:relative;line-height:1.6;}
+.rk-card-ul li::before{content:'';position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:50%;background:var(--mid);}
+.balance-card{background:var(--blue-light);border:1px solid rgba(26,86,219,.2);border-radius:10px;padding:18px 20px;margin-top:14px;display:flex;align-items:flex-start;gap:14px;}
+.balance-ico{width:36px;height:36px;border-radius:6px;background:var(--mid);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.balance-card h4{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:3px;}
+.balance-card p{font-size:12px;color:var(--text2);line-height:1.7;}
+
+/* ===== ADMIN LOGIN ===== */
+.adm-login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 24px;background:var(--bg);}
+.l-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:40px;width:100%;max-width:360px;text-align:center;box-shadow:var(--shadow-lg);}
+.l-ico{width:52px;height:52px;border-radius:10px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px;}
+.l-card h2{font-size:20px;font-weight:900;color:var(--navy);margin-bottom:5px;}
+.l-card p{font-size:13px;color:var(--text2);margin-bottom:22px;}
+.l-err{color:#dc2626;font-size:12px;margin-top:10px;display:none;font-weight:600;}
+
+/* ===== ADMIN PANEL ===== */
+.adm-wrap{padding-top:60px;min-height:100vh;background:var(--bg);}
+.adm-bar{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);padding:20px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.adm-bar h2{font-size:18px;font-weight:900;color:#fff;}
+.adm-bar p{font-size:12px;color:rgba(255,255,255,.45);margin-top:2px;}
+.adm-body{max-width:1020px;margin:0 auto;padding:24px 24px 80px;}
+.adm-tabs-row{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:20px;}
+.adm-tab{background:none;border:none;color:var(--text2);font-size:13px;font-weight:600;padding:12px 20px;cursor:pointer;transition:.2s;border-bottom:2px solid transparent;margin-bottom:-2px;}
+.adm-tab.on{color:var(--mid);border-bottom-color:var(--mid);}
+.adm-sec{display:none;}.adm-sec.on{display:block;}
+.notif-badge{display:inline-flex;align-items:center;justify-content:center;background:#dc2626;color:#fff;border-radius:50%;width:17px;height:17px;font-size:10px;font-weight:800;margin-left:5px;}
+.alert-row{background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:14px 18px;display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;}
+.alert-dot{width:8px;height:8px;border-radius:50%;background:#16a34a;flex-shrink:0;margin-top:5px;}
+.alert-row h4{font-size:13px;font-weight:800;color:#15803d;margin-bottom:2px;}
+.alert-row p{font-size:12px;color:#166534;line-height:1.6;}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:20px;}
+.stat-cell{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;box-shadow:var(--shadow);}
+.stat-n{font-size:28px;font-weight:900;color:var(--mid);}
+.stat-l{font-size:10px;color:var(--text3);letter-spacing:2px;margin-top:3px;text-transform:uppercase;}
+.ev-adm-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:10px;box-shadow:var(--shadow);}
+.ev-adm-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:14px;}
+.ev-adm-nm{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:2px;}
+.ev-adm-meta{font-size:11px;color:var(--text3);}
+.ev-adm-btns{display:flex;gap:7px;flex-shrink:0;}
+.btn-ed{background:var(--blue-light);border:1px solid rgba(26,86,219,.25);color:var(--mid);font-size:11px;font-weight:700;padding:6px 13px;border-radius:5px;cursor:pointer;transition:.2s;}
+.btn-ed:hover{background:var(--mid);color:#fff;}
+.btn-dl{background:#fff5f5;border:1px solid #fecaca;color:#dc2626;font-size:11px;font-weight:700;padding:6px 13px;border-radius:5px;cursor:pointer;transition:.2s;}
+.btn-dl:hover{background:#fee2e2;}
+.ev-edit-form{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;margin-top:12px;display:none;}
+.ev-edit-form.open{display:block;}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:480px){.fg2{grid-template-columns:1fr;}}
+.venue-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+.venue-lbl{font-size:10px;letter-spacing:2px;color:var(--text3);flex-shrink:0;text-transform:uppercase;font-weight:700;}
+.venue-inp{flex:1;min-width:180px;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:6px;font-size:13px;outline:none;}
+.venue-inp:focus{border-color:var(--mid);}
+.btn-sv{background:var(--mid);border:none;color:#fff;padding:9px 18px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;transition:.2s;}
+.btn-sv:hover{background:#1e63f5;}
+.add-ev-trig{background:var(--surface);border:2px dashed var(--border2);border-radius:10px;padding:22px;margin-bottom:10px;cursor:pointer;text-align:center;color:var(--text3);font-size:13px;font-weight:600;transition:.2s;}
+.add-ev-trig:hover{border-color:var(--mid);color:var(--mid);}
+.new-ev-form{background:var(--blue-light);border:1px solid rgba(26,86,219,.2);border-radius:10px;padding:20px;margin-bottom:10px;display:none;}
+.new-ev-form.open{display:block;}
+.tbl-wrap{overflow-x:auto;}
+.btbl{width:100%;border-collapse:collapse;background:var(--surface);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);}
+.btbl th{background:var(--navy);padding:11px 13px;font-size:10px;font-weight:700;color:rgba(255,255,255,.6);text-align:left;letter-spacing:2px;text-transform:uppercase;}
+.btbl td{padding:11px 13px;font-size:12px;border-bottom:1px solid var(--border);color:var(--text);}
+.btbl tr:last-child td{border-bottom:none;}
+.btbl tr:hover td{background:var(--bg);}
+.btbl tr.new-row td{background:#f0fdf4;}
+.new-tag{display:inline-block;background:#dcfce7;color:#15803d;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:800;letter-spacing:1px;margin-left:4px;}
+.rtag{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:800;}
+
+/* EMAIL NOTICE */
+.email-notice{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:flex-start;gap:12px;}
+.email-notice-ico{font-size:20px;flex-shrink:0;}
+.email-notice h4{font-size:12px;font-weight:800;color:#1e40af;margin-bottom:3px;}
+.email-notice p{font-size:12px;color:#1e3a8a;line-height:1.6;}
+.email-notice a{color:var(--mid);font-weight:700;text-decoration:underline;}
+
+@media(max-width:760px){.hdr-nav{display:none;}}
+@media(max-width:500px){
+  .hero-stats{flex-direction:column;}
+  .hst{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hst:last-child{border-bottom:none;}
+  .btbl th,.btbl td{padding:8px 9px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ====== HEADER ====== -->
+<header>
+  <div class="logo" onclick="goHome()">
+    <div class="logo-mark">MORI<span>FUT</span></div>
+    <span class="logo-sub">Iwate Sports Community</span>
+  </div>
+  <div class="hdr-r">
+    <nav class="hdr-nav">
+      <button onclick="navTo('about-sec')">About</button>
+      <button onclick="navTo('schedule-sec')">Schedule</button>
+      <button onclick="navTo('price-sec')">Price</button>
+      <button onclick="navTo('faq-sec')">FAQ</button>
+      <button onclick="navToPage('rank-pg')">Rank</button>
+    </nav>
+    <a class="hdr-line" href="https://lin.ee/rH9oR1y" target="_blank" rel="noopener">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINE予約
+    </a>
+    <button class="hdr-adm" onclick="navToPage('adm-login')">運営ログイン</button>
+  </div>
+</header>
+
+<!-- ====== HOME ====== -->
+<div id="home" class="pg on">
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- ピッチ全面 -->
+    <div class="hero-pitch">
+      <svg viewBox="0 0 1400 800" fill="none" preserveAspectRatio="xMidYMid slice">
+        <!-- 芝生ストライプ -->
+        <rect width="1400" height="800" fill="#0a3d1a"/>
+        <rect x="0" y="0" width="140" height="800" fill="#0b4520" opacity=".6"/>
+        <rect x="280" y="0" width="140" height="800" fill="#0b4520" opacity=".6"/>
+        <rect x="560" y="0" width="140" height="800" fill="#0b4520" opacity=".6"/>
+        <rect x="840" y="0" width="140" height="800" fill="#0b4520" opacity=".6"/>
+        <rect x="1120" y="0" width="140" height="800" fill="#0b4520" opacity=".6"/>
+        <!-- ピッチライン -->
+        <rect x="60" y="40" width="1280" height="720" stroke="white" stroke-width="3" fill="none"/>
+        <line x1="700" y1="40" x2="700" y2="760" stroke="white" stroke-width="3"/>
+        <circle cx="700" cy="400" r="120" stroke="white" stroke-width="3" fill="none"/>
+        <circle cx="700" cy="400" r="6" fill="white"/>
+        <!-- 左ペナ -->
+        <rect x="60" y="250" width="200" height="300" stroke="white" stroke-width="3" fill="none"/>
+        <rect x="60" y="305" width="80" height="190" stroke="white" stroke-width="3" fill="none"/>
+        <circle cx="250" cy="400" r="6" fill="white"/>
+        <!-- 右ペナ -->
+        <rect x="1140" y="250" width="200" height="300" stroke="white" stroke-width="3" fill="none"/>
+        <rect x="1260" y="305" width="80" height="190" stroke="white" stroke-width="3" fill="none"/>
+        <circle cx="1150" cy="400" r="6" fill="white"/>
+        <!-- コーナー -->
+        <path d="M60 40 Q80 40 80 60" stroke="white" stroke-width="2.5" fill="none"/>
+        <path d="M1340 40 Q1320 40 1320 60" stroke="white" stroke-width="2.5" fill="none"/>
+        <path d="M60 760 Q80 760 80 740" stroke="white" stroke-width="2.5" fill="none"/>
+        <path d="M1340 760 Q1320 760 1320 740" stroke="white" stroke-width="2.5" fill="none"/>
+      </svg>
+    </div>
+    <!-- 暗幕オーバーレイ -->
+    <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(160deg,rgba(10,20,50,.82) 0%,rgba(8,30,70,.75) 50%,rgba(5,15,35,.88) 100%);pointer-events:none;"></div>
+
+    <!-- 回転するボール装飾 -->
+    <svg class="hero-ball-l" viewBox="0 0 300 300" fill="none" style="animation:spin 30s linear infinite;">
+      <circle cx="150" cy="150" r="145" stroke="white" stroke-width="2"/>
+      <polygon points="150,15 190,70 250,70 210,115 228,175 150,140 72,175 90,115 50,70 110,70" stroke="white" stroke-width="2.5" fill="none"/>
+      <circle cx="150" cy="140" r="30" stroke="white" stroke-width="1.5" fill="none"/>
+    </svg>
+    <svg class="hero-ball-r" viewBox="0 0 300 300" fill="none" style="animation:spin 24s linear infinite reverse;">
+      <circle cx="150" cy="150" r="145" stroke="white" stroke-width="2"/>
+      <polygon points="150,15 190,70 250,70 210,115 228,175 150,140 72,175 90,115 50,70 110,70" stroke="white" stroke-width="2.5" fill="none"/>
+      <circle cx="150" cy="140" r="30" stroke="white" stroke-width="1.5" fill="none"/>
+    </svg>
+
+    <div class="hero-inner">
+      <div class="hero-pill">Iwate Futsal &amp; Soccer Community</div>
+      <div class="hero-brand">MORI<span>FUT</span></div>
+      <div class="hero-tagline">Since 2026 — Iwate, Japan</div>
+      <h1 class="hero-catch">
+        岩手で気軽にフットサル・サッカーをするなら<br>
+        <span>MORIFUT</span>
+      </h1>
+      <p class="hero-desc">経験者・未経験も大歓迎<br>お問い合わせはDMまたはLINEまで</p>
+      <div class="hero-btns">
+        <button class="btn-hero-blue" onclick="navToPage('booking-list-pg');renderEvList()">イベントを予約する</button>
+        <a class="btn-hero-line" href="https://lin.ee/rH9oR1y" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          LINEで予約
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hst"><div class="hst-n">500+</div><div class="hst-l">累計参加者</div></div>
+        <div class="hst"><div class="hst-n">8回</div><div class="hst-l">月間開催</div></div>
+        <div class="hst"><div class="hst-n">大会</div><div class="hst-l">月1回予定</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <div id="about-sec" style="background:var(--white);">
+    <div class="section">
+      <div class="sec-label">About</div>
+      <div class="sec-title">MORIFUTとは？</div>
+      <div class="sec-bar"></div>
+      <p class="sec-desc">「岩手でフットサルができる場所を探している」「仕事帰りに体を動かしたい」「新しい仲間を作りたい」そんな想いを持つ人々が集まってできた、アットホームなスポーツコミュニティです。</p>
+      <div class="about-grid">
+        <div class="about-card"><div class="about-num">01</div><div class="about-tag">未経験大歓迎</div><h3>アットホームな雰囲気</h3><p>初心者や女性も安心してプレーできるよう、ポジティブな声かけや和気あいあいとした雰囲気を大切にしています。</p></div>
+        <div class="about-card"><div class="about-num">02</div><div class="about-tag">一人参加も安心</div><h3>半数が「一人参加」から</h3><p>参加者の約50%が一人での参加からスタートしています。スタッフがフォローするので安心してご参加ください。</p></div>
+        <div class="about-card"><div class="about-num">03</div><div class="about-tag">いつでも参加可能</div><h3>月に約8回の高頻度開催</h3><p>毎月約8回のペースで開催中。ライフスタイルに合わせて気軽に参加できます。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div id="schedule-sec" style="background:var(--bg);">
+    <div class="section">
+      <div class="sec-label">Schedule</div>
+      <div class="sec-title">開催<span>スケジュール</span></div>
+      <div class="sec-bar"></div>
+      <p class="sec-desc">参加したいイベントを選んで予約してください</p>
+      <div class="ev-grid" id="home-ev-grid"></div>
+      <div style="text-align:center;margin-top:20px;">
+        <button class="btn-hero-blue" style="font-size:13px;padding:13px 28px;" onclick="navToPage('booking-list-pg');renderEvList()">すべてのイベントを見る</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SNS -->
+  <div id="sns-sec" style="background:var(--white);">
+    <div class="section">
+      <div class="sec-label">SNS</div>
+      <div class="sec-title">MORIFUTの<span>様子はこちら</span></div>
+      <div class="sec-bar"></div>
+      <p class="sec-desc">普段の活動風景やゲームの熱気を発信中！実際のプレーやアットホームな雰囲気をチェックしてください。</p>
+      <div class="sns-grid">
+        <a class="sns-card" href="https://lin.ee/rH9oR1y" target="_blank" rel="noopener"><div class="sns-ico" style="background:#06C755;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg></div><div><div class="sns-name">LINE</div><div class="sns-sub">予約・お問い合わせ</div></div></a>
+        <a class="sns-card" href="https://www.instagram.com/mori_fut?igsh=MTBkN3B1NDg4cGpoYg==" target="_blank" rel="noopener"><div class="sns-ico" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#bc1888);"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div><div><div class="sns-name">Instagram</div><div class="sns-sub">活動写真を発信中</div></div></a>
+        <a class="sns-card" href="https://youtube.com/@morifut?si=CRbOkfMu97WlCdNp" target="_blank" rel="noopener"><div class="sns-ico" style="background:#FF0000;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></div><div><div class="sns-name">YouTube</div><div class="sns-sub">プレー動画を公開中</div></div></a>
+        <a class="sns-card" href="https://www.tiktok.com/@morifut?_r=1&_t=ZS-92pjTsSrfHx" target="_blank" rel="noopener"><div class="sns-ico" style="background:#010101;"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></div><div><div class="sns-name">TikTok</div><div class="sns-sub">ショート動画で発信中</div></div></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICE -->
+  <div id="price-sec" style="background:var(--bg);">
+    <div class="section">
+      <div class="sec-label">Price</div>
+      <div class="sec-title">参加費のご案内</div>
+      <div class="sec-bar"></div>
+      <p class="sec-desc">誰でも気軽にスポーツを楽しめるよう、リーズナブルで明確な料金設定にしています。</p>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-type-lbl">通常プラン</div>
+          <div class="price-name">大人（一般）</div>
+          <div class="price-yen">¥1,000</div>
+          <div class="price-unit">税込 / 1回</div>
+          <div class="price-hr"></div>
+          <ul class="price-ul"><li>ビブス無料貸出</li><li>ボール貸出・コート代込み</li><li>当日キャンセル料100%</li></ul>
+        </div>
+        <div class="price-card featured">
+          <div class="price-badge">学生応援</div>
+          <div class="price-type-lbl">学割プラン</div>
+          <div class="price-name">学生割引</div>
+          <div class="price-yen">¥500</div>
+          <div class="price-unit">税込 / 1回（学生証提示）</div>
+          <div class="price-hr"></div>
+          <ul class="price-ul"><li>学生証をご提示ください</li><li>運動不足解消・サークル代わりに</li><li>当日キャンセル料100%</li></ul>
+        </div>
+      </div>
+      <div class="discount-box">
+        <div class="disc-icon">★</div>
+        <div><div class="disc-h">3名以上の同時予約で合計から500円OFF</div><div class="disc-p">友人・同僚・サークル仲間を誘って一緒にお越しください！グループでのご参加がお得です。</div></div>
+      </div>
+      <div class="cancel-box">
+        <h4>当日キャンセル・ドタキャンについて</h4>
+        <p>当日のキャンセルは固くお断りしております。万が一の場合はキャンセル料100%（参加費全額）を頂戴いたします。前日までにLINEでご連絡ください。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULES -->
+  <div id="rules-sec" style="background:var(--white);">
+    <div class="section">
+      <div class="sec-label">Rules</div>
+      <div class="sec-title">参加ルール</div>
+      <div class="sec-bar"></div>
+      <div class="rules-grid">
+        <div class="rule-col">
+          <div class="rule-col-h">プレーのルール</div>
+          <div class="rule-items">
+            <div class="rule-item"><div class="r-num">1</div><span>激しすぎる接触プレーは禁止</span></div>
+            <div class="rule-item"><div class="r-num">2</div><span>過度な指示出し・批判は禁止。ポジティブな声かけを心がけましょう</span></div>
+            <div class="rule-item"><div class="r-num">3</div><span>初参加の方への積極的な声かけ</span></div>
+            <div class="rule-item"><div class="r-num">4</div><span>備品は大切に使用すること</span></div>
+            <div class="rule-item"><div class="r-num">5</div><span>遅刻・欠席は事前連絡を必ず行うこと</span></div>
+            <div class="rule-item"><div class="r-num">6</div><span>女性に対するタックルは禁止</span></div>
+          </div>
+        </div>
+        <div class="rule-col">
+          <div class="rule-col-h">注意事項</div>
+          <div class="rule-items">
+            <div class="rule-item"><div class="r-dot"></div><span>けが・事故については自己責任となります</span></div>
+            <div class="rule-item"><div class="r-dot"></div><span>施設のルールを厳守してください</span></div>
+            <div class="rule-item"><div class="r-dot"></div><span>貴重品は各自で管理してください</span></div>
+            <div class="rule-item"><div class="r-dot"></div><span>他の利用者に迷惑がかかる行為は禁止</span></div>
+            <div class="rule-item"><div class="r-dot"></div><span>当日キャンセルはキャンセル料100%が発生します</span></div>
+          </div>
+          <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);">
+            <div class="rule-col-h" style="margin-bottom:10px;">中学生・高校生の方</div>
+            <div class="rule-items">
+              <div class="rule-item"><div class="r-dot"></div><span>保護者の許可がある場合のみ参加可能</span></div>
+              <div class="rule-item"><div class="r-dot"></div><span>危険なプレーは禁止</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq-sec" style="background:var(--bg);">
+    <div class="section">
+      <div class="sec-label">FAQ</div>
+      <div class="sec-title">よくある質問</div>
+      <div class="sec-bar"></div>
+      <div class="faq-wrap">
+        <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><div class="faq-q-l"><span class="faq-badge">Q</span><span>サッカー未経験でも大丈夫ですか？</span></div><span class="faq-arr">▼</span></button><div class="faq-a">はい、もちろん大丈夫です。ランク制度を活用することで、チームに偏りのないようにします。</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><div class="faq-q-l"><span class="faq-badge">Q</span><span>一人参加でも大丈夫ですか？</span></div><span class="faq-arr">▼</span></button><div class="faq-a">大丈夫です。参加者の約50%が一人での参加からスタートしています。</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><div class="faq-q-l"><span class="faq-badge">Q</span><span>スパイクは必要ですか？</span></div><span class="faq-arr">▼</span></button><div class="faq-a">靴は動きやすい靴であればどのような靴でも大丈夫です！フットサル・スパイクでも参加可能です！</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><div class="faq-q-l"><span class="faq-badge">Q</span><span>雨天時はどうなりますか？</span></div><span class="faq-arr">▼</span></button><div class="faq-a">フットサルは天候に左右されないので行います。サッカーは基本的に行いますが、中止や予定変更の場合はInstagramやLINEなどでお知らせします。</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><div class="faq-q-l"><span class="faq-badge">Q</span><span>女性でも参加できますか？</span></div><span class="faq-arr">▼</span></button><div class="faq-a">はい、女性の方も多く参加されています。女性への激しいタックルは禁止されています。</div></div>
+        <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open')"><div class="faq-q-l"><span class="faq-badge">Q</span><span>キャンセルの連絡はいつまでですか？</span></div><span class="faq-arr">▼</span></button><div class="faq-a">前日までにLINEでご連絡ください。当日キャンセルはキャンセル料100%が発生します。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-sec">
+    <div class="cta-inner">
+      <div class="cta-lbl">Join Us</div>
+      <h2 class="cta-h">開催スケジュールをLINEで確認して今すぐエントリー</h2>
+      <p class="cta-p">MORIFUT公式LINEから次回の開催スケジュールを手軽に確認できます。<br>お問い合わせはDMまたはLINEまで</p>
+      <div class="cta-btns">
+        <a class="btn-hero-line" href="https://lin.ee/rH9oR1y" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>LINEで予約する</a>
+        <button class="btn-hero-ghost" onclick="navToPage('booking-list-pg');renderEvList()">サイトから予約する</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft-inner">
+      <div class="ft-top">
+        <div>
+          <div class="ft-logo-m">MORI<span>FUT</span></div>
+          <span class="ft-logo-s">Iwate Sports Community</span>
+          <p class="ft-brand-p">岩手のフットサル・サッカーコミュニティ。誰もが笑顔でボールを蹴る最高の場所を提供します。</p>
+        </div>
+        <div class="ft-cols">
+          <div class="ft-col">
+            <h4>Menu</h4>
+            <a onclick="navTo('about-sec')">About</a>
+            <a onclick="navTo('schedule-sec')">Schedule</a>
+            <a onclick="navTo('price-sec')">Price</a>
+            <a onclick="navTo('faq-sec')">FAQ</a>
+            <a onclick="navToPage('rank-pg')">Rank</a>
+          </div>
+          <div class="ft-col">
+            <h4>Links</h4>
+            <a href="https://lin.ee/rH9oR1y" target="_blank">LINE</a>
+            <a href="https://www.instagram.com/mori_fut?igsh=MTBkN3B1NDg4cGpoYg==" target="_blank">Instagram</a>
+            <a href="https://youtube.com/@morifut?si=CRbOkfMu97WlCdNp" target="_blank">YouTube</a>
+            <a href="https://www.tiktok.com/@morifut?_r=1&_t=ZS-92pjTsSrfHx" target="_blank">TikTok</a>
+          </div>
+        </div>
+      </div>
+      <div class="ft-bot">
+        <div class="ft-copy">© MORIFUT Community. All Rights Reserved.</div>
+        <div class="ft-sns">
+          <a class="ftsn" style="background:#06C755;" href="https://lin.ee/rH9oR1y" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg></a>
+          <a class="ftsn" style="background:linear-gradient(135deg,#f09433,#dc2743,#bc1888);" href="https://www.instagram.com/mori_fut?igsh=MTBkN3B1NDg4cGpoYg==" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a class="ftsn" style="background:#FF0000;" href="https://youtube.com/@morifut?si=CRbOkfMu97WlCdNp" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></a>
+          <a class="ftsn" style="background:#111;" href="https://www.tiktok.com/@morifut?_r=1&_t=ZS-92pjTsSrfHx" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ====== BOOKING LIST ====== -->
+<div id="booking-list-pg" class="pg">
+  <div class="sub-wrap">
+    <div class="sub-hero">
+      <button class="sub-back" onclick="goHome()">← ホームに戻る</button>
+      <h2>イベント予約</h2>
+      <p>参加したい日程を選んで予約してください</p>
+    </div>
+    <div class="sub-body"><div class="ev-grid" id="ev-list-grid"></div></div>
+  </div>
+</div>
+
+<!-- ====== BOOKING FORM ====== -->
+<div id="bk-form-pg" class="pg">
+  <div class="sub-wrap">
+    <div class="sub-hero">
+      <button class="sub-back" onclick="navToPage('booking-list-pg');renderEvList()">← イベント一覧に戻る</button>
+      <h2 id="bf-title">参加予約</h2>
+      <p id="bf-meta"></p>
+    </div>
+    <div class="bk-body">
+      <div class="steps-row">
+        <div class="sdot on" id="sd1">1</div><div class="s-line" id="sl1"></div>
+        <div class="sdot" id="sd2">2</div><div class="s-line" id="sl2"></div>
+        <div class="sdot" id="sd3">3</div>
+      </div>
+      <div id="step1">
+        <div class="fc">
+          <div class="fc-ttl">参加人数</div>
+          <div class="fg">
+            <label class="fl">何人で参加しますか？<span class="req">*</span></label>
+            <div class="stepper">
+              <button class="sp-b" onclick="chgCnt(-1)">－</button>
+              <div class="sp-v" id="cnt-v">1</div>
+              <button class="sp-b" onclick="chgCnt(1)">＋</button>
+            </div>
+          </div>
+        </div>
+        <div class="fc"><div class="fc-ttl">参加者情報</div><div id="prows"></div></div>
+        <div class="fc">
+          <div class="fc-ttl">備考欄</div>
+          <div class="fg">
+            <label class="fl">ご要望・連絡事項などがあればご記入ください（任意）</label>
+            <textarea class="fi" id="bk-note" rows="3" placeholder="例：初参加です／少し遅れて参加します　など"></textarea>
+          </div>
+        </div>
+        <div class="fc"><div class="fc-ttl">参加費の目安</div><div id="pp-box"></div></div>
+        <button class="btn-p" onclick="goStep2()">確認画面へ進む</button>
+      </div>
+      <div id="step2" style="display:none;">
+        <div class="cf-card"><div class="cf-ttl">予約内容の確認</div><div id="cf-rows"></div></div>
+        <div class="btn-pair">
+          <button class="btn-s" onclick="goStep1()">修正する</button>
+          <button class="btn-p" onclick="doSubmit()">予約を確定する</button>
+        </div>
+      </div>
+      <div id="step3" style="display:none;">
+        <div class="suc-pg">
+          <div class="suc-circle">✓</div>
+          <p class="suc-tag">予約完了</p>
+          <h2 class="suc-h">ご予約ありがとうございます</h2>
+          <p class="suc-p">当日お会いできることを楽しみにしております！<br>ご不明な点はLINEよりお気軽にお問い合わせください。</p>
+          <div class="suc-det" id="suc-det"></div>
+          <div class="suc-note">
+            <strong>キャンセルについて</strong>
+            当日のキャンセルはキャンセル料100%が発生します。欠席の場合は必ず前日までにLINEでご連絡ください。
+          </div>
+          <button class="btn-p" onclick="goHome()" style="max-width:280px;margin:0 auto;">ホームに戻る</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== RANK PAGE ====== -->
+<div id="rank-pg" class="pg">
+  <div class="sub-wrap">
+    <div class="sub-hero">
+      <button class="sub-back" onclick="goHome()">← ホームに戻る</button>
+      <h2>ランク説明</h2>
+      <p>レベルに合わせてランクを選ぶだけ。チームは均等になるよう調整します。</p>
+    </div>
+    <div class="rk-pg-inner">
+      <div id="rank-display"></div>
+      <div class="balance-card">
+        <div class="balance-ico">⚖</div>
+        <div><h4>チームは均等になるように調整します</h4><p>ご予約いただいたランクをもとに、レベルが偏らないようスタッフがチーム分けを行います。どのランクでも安心して楽しめます。</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ADMIN LOGIN ====== -->
+<div id="adm-login" class="pg">
+  <div class="adm-login-wrap">
+    <div class="l-card">
+      <div class="l-ico">🔒</div>
+      <h2>運営管理画面</h2>
+      <p>管理者パスワードを入力してください</p>
+      <div class="fg"><input type="password" class="fi" id="apw" placeholder="パスワードを入力" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <button class="btn-p" onclick="doLogin()">ログイン</button>
+      <div class="l-err" id="l-err">パスワードが違います</div>
+      <button class="btn-s" onclick="goHome()" style="margin-top:10px;">ホームに戻る</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ADMIN PANEL ====== -->
+<div id="adm-panel" class="pg">
+  <div class="adm-wrap">
+    <div class="adm-bar">
+      <div><h2>運営管理画面</h2><p id="sync-status">MORIFUT イベント・予約管理</p></div>
+      <button class="btn-s" onclick="doLogout()" style="width:auto;padding:7px 16px;font-size:12px;background:#fff;">ログアウト</button>
+    </div>
+    <div class="adm-body">
+      <div id="alert-area"></div>
+
+      <div class="adm-tabs-row">
+        <button class="adm-tab on" onclick="switchTab(this,'sec-ev')">イベント管理</button>
+        <button class="adm-tab" id="tab-bk" onclick="switchTab(this,'sec-bk')">予約一覧<span class="notif-badge" id="notif-n" style="display:none;">0</span></button>
+      </div>
+      <div id="sec-ev" class="adm-sec on">
+        <div class="add-ev-trig" onclick="toggleNF()">＋ 新しいイベントを追加</div>
+        <div class="new-ev-form" id="new-ev-form">
+          <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--mid);margin-bottom:14px;text-transform:uppercase;">新規イベント作成</div>
+          <div class="fg2">
+            <div class="fg"><label class="fl">イベント名</label><input class="fi" id="ne-name" placeholder="例：水曜フットサル"></div>
+            <div class="fg"><label class="fl">種目</label><select class="fi" id="ne-type"><option value="futsal">フットサル（定員20名）</option><option value="soccer">サッカー（定員24名）</option></select></div>
+            <div class="fg"><label class="fl">日付</label><input type="date" class="fi" id="ne-date"></div>
+            <div class="fg"><label class="fl">時間</label><input class="fi" id="ne-time" placeholder="例：19:00〜21:00"></div>
+            <div class="fg" style="grid-column:1/-1;"><label class="fl">会場</label><input class="fi" id="ne-venue" placeholder="例：盛岡市体育館 A面"></div>
+          </div>
+          <div class="btn-pair" style="margin-top:12px;">
+            <button class="btn-s" onclick="toggleNF()" style="flex:1;">キャンセル</button>
+            <button class="btn-p" onclick="addEv()" style="flex:2;">作成する</button>
+          </div>
+        </div>
+        <div id="ev-adm-list"></div>
+      </div>
+      <div id="sec-bk" class="adm-sec">
+        <div class="stats-row" id="adm-stats"></div>
+        <div id="bk-detail-area"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const ADM_PW='morifut2026';
+var lastEvJson='',lastBkJson=''; // クラウド同期の差分チェック用
+
+// ============================================================
+// ▼▼▼ クラウド同期（設定不要・このまま動きます）▼▼▼
+// 無料の共有ストレージ textdb.online を利用して、
+// 運営の日程変更・お客さんの予約を全端末で自動共有します。
+// SYNC_KEY はこのサイト専用のランダムIDです（変更不要）。
+// ※ 同期サービスに接続できない時は自動でこの端末のみの保存に切替わり、
+//   サイト自体は問題なく動き続けます。
+// ============================================================
+const SYNC_KEY='morifut_2026_62840ec67cd5e0cf';
+const useCloud=true;
+function cloudGet(p){
+  return fetch('https://textdb.online/'+SYNC_KEY+'_'+p,{cache:'no-store'})
+    .then(function(r){return r.text();})
+    .then(function(t){if(!t)return null;try{return JSON.parse(t);}catch(e){return null;}})
+    .catch(function(e){return null;});
+}
+function cloudSet(p,data){
+  var body='key='+encodeURIComponent(SYNC_KEY+'_'+p)+'&value='+encodeURIComponent(JSON.stringify(data));
+  return fetch('https://textdb.online/update/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+    .catch(function(e){console.warn('sync error',e);});
+}
+const CAP={futsal:20,soccer:24};
+const PRICE_T={社会人:1000,学生:500};
+const NOTIFY_EMAIL='morifut20252026@gmail.com';
+const RANKS=[
+  {r:5,name:'エリート',lbl:'上級者・競技志向',col:'#DC2626',bg:'rgba(220,38,38,.1)',stars:'★★★★★',b:['大会出場経験がある','強度の高いプレーができる','上級者向けのプレーを楽しみたい方']},
+  {r:4,name:'アドバンス',lbl:'上級者・経験者',col:'#EA580C',bg:'rgba(234,88,12,.1)',stars:'★★★★☆',b:['サッカー/フットサル経験が長い','戦術理解があり安定したプレーができる','経験者向けのレベル']},
+  {r:3,name:'レギュラー',lbl:'中級者・安定',col:'#CA8A04',bg:'rgba(202,138,4,.1)',stars:'★★★☆☆',b:['ある程度の経験がある','基本的な技術・戦術を理解している','普段から個サルに参加している方']},
+  {r:2,name:'ビギナー',lbl:'初心者〜初級者',col:'#16A34A',bg:'rgba(22,163,74,.1)',stars:'★★☆☆☆',b:['フットサルを始めたばかり','経験は少ないが楽しみたい','初心者・女性も安心して参加できます']},
+  {r:1,name:'エントリー',lbl:'超初心者',col:'#2563EB',bg:'rgba(37,99,235,.1)',stars:'★☆☆☆☆',b:['ほとんど経験がない','まずはボールに慣れたい','みんなで楽しくプレーしたい方']},
+];
+
+// ===== DEFAULT EVENTS =====
+const DEFAULT_EVENTS=[
+  {id:1,name:'水曜フットサル',type:'futsal',date:'2026-06-17',time:'19:00〜21:00',venue:'盛岡市体育館 A面',p:5},
+  {id:2,name:'土曜サッカー',type:'soccer',date:'2026-06-21',time:'09:00〜11:00',venue:'滝沢市グラウンド',p:3},
+  {id:3,name:'平日夜フットサル',type:'futsal',date:'2026-06-19',time:'19:00〜21:00',venue:'盛岡市体育館 B面',p:11},
+  {id:4,name:'日曜フットサル',type:'futsal',date:'2026-06-22',time:'13:00〜15:00',venue:'滝沢市体育館',p:2},
+];
+
+// ===== localStorage保存・読み込み =====
+function saveEvents(){
+  try{localStorage.setItem('morifut_events',JSON.stringify(events));}catch(e){}
+  if(useCloud){
+    lastEvJson=JSON.stringify(events); // 自分の変更を即確定（巻き戻り防止）
+    cloudSet('events',events).then(function(){ if(typeof syncFromCloud==='function')setTimeout(syncFromCloud,300); });
+  }
+}
+function loadEvents(){
+  try{
+    const saved=localStorage.getItem('morifut_events');
+    if(saved) return JSON.parse(saved);
+  }catch(e){}
+  return JSON.parse(JSON.stringify(DEFAULT_EVENTS));
+}
+function saveBookings(){
+  try{localStorage.setItem('morifut_bookings',JSON.stringify(bookings));
+      localStorage.setItem('morifut_bcnt',String(bCnt));}catch(e){}
+  if(useCloud){
+    lastBkJson=JSON.stringify(bookings);
+    cloudSet('bookings',bookings).then(function(){ if(typeof syncFromCloud==='function')setTimeout(syncFromCloud,300); });
+  }
+}
+function loadBookings(){
+  try{
+    const saved=localStorage.getItem('morifut_bookings');
+    const savedCnt=localStorage.getItem('morifut_bcnt');
+    if(saved) bookings=JSON.parse(saved);
+    if(savedCnt) bCnt=parseInt(savedCnt);
+  }catch(e){}
+}
+
+let events=loadEvents();
+let bookings=[],bCnt=1001,newBks=[];
+let curEvId=null,pCnt=1,pData=[];
+
+// ===== PAGE =====
+function navToPage(id){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  window.scrollTo({top:0,behavior:'instant'});
+}
+function goHome(){navToPage('home');renderHomeGrid();}
+function navTo(secId){
+  if(!document.getElementById('home').classList.contains('on')){navToPage('home');renderHomeGrid();}
+  setTimeout(()=>{const el=document.getElementById(secId);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},100);
+}
+
+// ===== HELPERS =====
+function fmtDate(s){const d=new Date(s),w=['日','月','火','水','木','金','土'];return`${d.getMonth()+1}/${d.getDate()}（${w[d.getDay()]}）`;}
+function tLabel(t){return t==='futsal'?'フットサル':'サッカー';}
+function getCap(t,ev){if(ev&&ev.customCap)return ev.customCap;return CAP[t]||20;}
+
+// ===== EVENT CARD =====
+function evCardHTML(ev,showBtn){
+  const cap=getCap(ev.type,ev),rem=cap-ev.p,ratio=ev.p/cap;
+  const fc=ratio>=1?'full':ratio>=.8?'warn':'ok';
+  const rc=ratio>=1?'full':ratio>=.8?'warn':'ok';
+  const rt=ratio>=1?'満員':`残り${rem}枠`;
+  return `<div class="ev-card">
+    <div class="ev-card-top">
+      <span class="ev-sport-label">${tLabel(ev.type)}</span>
+      <span class="ev-date-pill">${fmtDate(ev.date)}</span>
+    </div>
+    <div class="ev-body">
+      <div class="ev-name">${ev.name}</div>
+      <div class="ev-metas">
+        <div class="ev-meta"><div class="ev-meta-ico">🕐</div><span>${ev.time}</span></div>
+        <div class="ev-meta"><div class="ev-meta-ico">📍</div><span>${ev.venue}</span></div>
+      </div>
+      <div class="cap-area">
+        <div class="cap-top"><span>参加者数</span><strong>${ev.p} / ${cap}名</strong></div>
+        <div class="cap-track"><div class="cap-fill ${fc}" style="width:${Math.min(ratio*100,100)}%"></div></div>
+      </div>
+    </div>
+    <div class="ev-foot">
+      <span class="rem-txt ${rc}">${rt}</span>
+      ${ratio<1&&showBtn?`<button class="ev-book-btn" onclick="openBkForm(${ev.id})">予約する</button>`:''}
+      ${ratio>=1?'<span style="color:#dc2626;font-size:11px;font-weight:700;">満員</span>':''}
+    </div>
+  </div>`;
+}
+function renderHomeGrid(){
+  const g=document.getElementById('home-ev-grid');
+  if(!g)return;
+  g.innerHTML=[...events].sort((a,b)=>new Date(a.date)-new Date(b.date)).slice(0,4).map(e=>evCardHTML(e,true)).join('');
+}
+function renderEvList(){
+  const g=document.getElementById('ev-list-grid');
+  if(!g)return;
+  g.innerHTML=[...events].sort((a,b)=>new Date(a.date)-new Date(b.date)).map(e=>evCardHTML(e,true)).join('');
+}
+
+// ===== BOOKING =====
+function openBkForm(id){
+  curEvId=id;pCnt=1;pData=[];
+  const ev=events.find(e=>e.id===id);
+  document.getElementById('bf-title').textContent=ev.name;
+  document.getElementById('bf-meta').textContent=`${fmtDate(ev.date)} ${ev.time}  |  ${ev.venue}`;
+  const nt=document.getElementById('bk-note');if(nt)nt.value='';
+  navToPage('bk-form-pg');
+  goStep1();
+}
+function chgCnt(d){
+  pCnt=Math.max(1,Math.min(10,pCnt+d));
+  document.getElementById('cnt-v').textContent=pCnt;
+  renderPRows();updPP();
+}
+function renderPRows(){
+  let h='';
+  for(let i=0;i<pCnt;i++){
+    const d=pData[i]||{};
+    h+=`<div class="prow">
+      <div class="prow-lbl">参加者${pCnt>1?' '+(i+1):''}</div>
+      <div class="prow-grid">
+        <div class="fg" style="margin:0;"><label class="fl">お名前（フルネーム）<span class="req">*</span></label><input class="fi" id="pn-${i}" placeholder="山田 太郎" value="${d.name||''}" oninput="savePD(${i})"></div>
+        <div class="fg" style="margin:0;"><label class="fl">性別<span class="req">*</span></label>
+          <div class="tg-grp" id="gen-${i}">
+            <button class="tg-btn ${d.gender==='女性'?'':'on'}" onclick="tgSel(this,'gen-${i}');savePD(${i})" data-v="男性">男性</button>
+            <button class="tg-btn ${d.gender==='女性'?'on':''}" onclick="tgSel(this,'gen-${i}');savePD(${i})" data-v="女性">女性</button>
+          </div>
+        </div>
+        <div class="fg" style="margin:0;"><label class="fl">区分<span class="req">*</span></label>
+          <div class="tg-grp" id="st-${i}">
+            <button class="tg-btn ${d.status==='学生'?'':'on'}" onclick="tgSel(this,'st-${i}');savePD(${i});updPP()" data-v="社会人">社会人</button>
+            <button class="tg-btn ${d.status==='学生'?'on':''}" onclick="tgSel(this,'st-${i}');savePD(${i});updPP()" data-v="学生">学生</button>
+          </div>
+        </div>
+        <div class="fg" style="margin:0;"><label class="fl">居住地<span class="req">*</span></label>
+          <div class="tg-grp" id="area-${i}">
+            <button class="tg-btn ${d.area==='盛岡市外'?'':'on'}" onclick="tgSel(this,'area-${i}');savePD(${i})" data-v="盛岡市内">盛岡市内</button>
+            <button class="tg-btn ${d.area==='盛岡市外'?'on':''}" onclick="tgSel(this,'area-${i}');savePD(${i})" data-v="盛岡市外">盛岡市外</button>
+          </div>
+        </div>
+      </div>
+      <div class="fg" style="margin-top:14px;margin-bottom:0;"><label class="fl">ランク<span class="req">*</span></label>
+        <div class="rk-list">
+          ${RANKS.map(rk=>`
+          <div class="rk-row ${d.rank===rk.r?'on':''}" onclick="selRank(${i},${rk.r})" id="rk-${i}-${rk.r}">
+            <div class="rk-badge" style="background:${rk.bg};border:1px solid ${rk.col};"><span class="rk-rl" style="color:${rk.col};">RANK</span><span class="rk-rn" style="color:${rk.col};">${rk.r}</span></div>
+            <div class="rk-info"><div class="rk-nm" style="color:${rk.col};">${rk.name}</div><div class="rk-lb">${rk.lbl}</div><div class="rk-st" style="color:${rk.col};">${rk.stars}</div><div class="rk-dc">${rk.b[0]}</div></div>
+            <div class="rk-chk">✓</div>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+  }
+  document.getElementById('prows').innerHTML=h;
+}
+function savePD(i){
+  if(!pData[i])pData[i]={};
+  const n=document.getElementById('pn-'+i);if(n)pData[i].name=n.value;
+  ['gen-'+i,'st-'+i,'area-'+i].forEach(gid=>{
+    const b=document.querySelector('#'+gid+' .tg-btn.on');
+    if(b){
+      if(gid.startsWith('gen'))pData[i].gender=b.dataset.v;
+      else if(gid.startsWith('st'))pData[i].status=b.dataset.v;
+      else pData[i].area=b.dataset.v;
+    }
+  });
+}
+function selRank(i,r){
+  if(!pData[i])pData[i]={};
+  pData[i].rank=r;
+  RANKS.forEach(rk=>{const el=document.getElementById('rk-'+i+'-'+rk.r);if(el)el.classList.toggle('on',rk.r===r);});
+}
+function tgSel(btn,gid){document.querySelectorAll('#'+gid+' .tg-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');}
+function calcP(){
+  let tot=0;
+  for(let i=0;i<pCnt;i++){const d=pData[i]||{};tot+=PRICE_T[d.status||'社会人'];}
+  const disc=pCnt>=3?500:0;
+  return{tot,disc,final:tot-disc};
+}
+function updPP(){
+  for(let i=0;i<pCnt;i++)savePD(i);
+  const{disc,final}=calcP();
+  let h='';
+  for(let i=0;i<pCnt;i++){const d=pData[i]||{},st=d.status||'社会人';h+=`<div class="pp-row"><span class="pp-k">${pCnt>1?'参加者'+(i+1):'参加者'}（${st}）</span><span class="pp-v">¥${PRICE_T[st].toLocaleString()}</span></div>`;}
+  if(disc>0)h+=`<div class="pp-row"><span class="pp-disc">3名以上割引</span><span class="pp-v" style="color:#d97706;">－¥${disc}</span></div>`;
+  h+=`<div class="pp-row tot"><span class="pp-k">合計</span><span class="pp-v">¥${final.toLocaleString()}</span></div>`;
+  document.getElementById('pp-box').innerHTML='<div class="pp-card">'+h+'</div>';
+}
+function goStep1(){
+  document.getElementById('step1').style.display='block';
+  document.getElementById('step2').style.display='none';
+  document.getElementById('step3').style.display='none';
+  updDots(1);renderPRows();updPP();
+}
+function goStep2(){
+  for(let i=0;i<pCnt;i++){
+    savePD(i);const d=pData[i]||{};
+    if(!d.name||!d.name.trim()){alert('参加者'+(i+1)+'のお名前を入力してください');return;}
+    if(!d.rank){alert('参加者'+(i+1)+'のランクを選択してください');return;}
+    if(!d.status)pData[i].status='社会人';
+    if(!d.gender)pData[i].gender='男性';
+    if(!d.area)pData[i].area='盛岡市内';
+  }
+  const ev=events.find(e=>e.id===curEvId);
+  const{disc,final}=calcP();
+  let h=`
+    <div class="cf-row"><span class="cf-k">イベント</span><span class="cf-v">${ev.name}</span></div>
+    <div class="cf-row"><span class="cf-k">日時</span><span class="cf-v">${fmtDate(ev.date)} ${ev.time}</span></div>
+    <div class="cf-row"><span class="cf-k">会場</span><span class="cf-v">${ev.venue}</span></div>
+    <div class="cf-row"><span class="cf-k">参加人数</span><span class="cf-v">${pCnt}名</span></div>`;
+  for(let i=0;i<pCnt;i++){
+    const d=pData[i],ri=RANKS.find(rk=>rk.r===d.rank);
+    h+=`<div class="cf-row"><span class="cf-k">${pCnt>1?'参加者'+(i+1):'参加者'}</span>
+      <span class="cf-v">${d.name}<br><span style="font-size:12px;color:var(--text2);">${d.gender} / ${d.status} / ${d.area}</span><br><span style="font-size:11px;color:${ri.col};font-weight:800;">RANK ${d.rank} ${ri.name}</span></span></div>`;
+  }
+  if(disc>0)h+=`<div class="cf-row"><span class="cf-k">割引</span><span class="cf-v" style="color:#d97706;">－¥${disc}</span></div>`;
+  const noteVal=(document.getElementById('bk-note')&&document.getElementById('bk-note').value||'').trim();
+  if(noteVal)h+=`<div class="cf-row"><span class="cf-k">備考</span><span class="cf-v" style="font-weight:500;white-space:pre-wrap;">${noteVal}</span></div>`;
+  h+=`<div class="cf-row"><span class="cf-k" style="font-weight:800;color:var(--navy);">合計金額</span><span class="cf-v" style="font-size:20px;color:var(--mid);">¥${final.toLocaleString()}</span></div>`;
+  document.getElementById('cf-rows').innerHTML=h;
+  document.getElementById('step1').style.display='none';
+  document.getElementById('step2').style.display='block';
+  document.getElementById('step3').style.display='none';
+  updDots(2);window.scrollTo({top:0,behavior:'instant'});
+}
+
+function doSubmit(){
+  const ev=events.find(e=>e.id===curEvId);
+  const now=new Date();
+  const ds=`${now.getMonth()+1}/${now.getDate()} ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
+  const{final}=calcP();
+
+  // 残り枠の最終チェック（他の端末からの予約と競合しないように）
+  const capNow=getCap(ev.type,ev);
+  if(ev.p+pCnt>capNow){
+    alert('申し訳ありません。残り枠が'+(capNow-ev.p)+'名のため、この人数では予約できません。');
+    return;
+  }
+  // 予約データを保存
+  const noteVal=(document.getElementById('bk-note')&&document.getElementById('bk-note').value||'').trim();
+  for(let i=0;i<pCnt;i++){
+    const d=pData[i],id=Date.now()+i;
+    const rec={id,evId:curEvId,evName:ev.name,evDate:ev.date,evTime:ev.time,
+      name:d.name,gender:d.gender,status:d.status,area:d.area,
+      rank:d.rank,rankName:RANKS.find(rk=>rk.r===d.rank).name,
+      fee:PRICE_T[d.status],bkDate:ds,isNew:true,groupTotal:final,groupCnt:pCnt,note:noteVal};
+    bookings.push(rec);
+    newBks.push(id);
+  }
+  ev.p=Math.min(capNow,ev.p+pCnt);
+  saveEvents();
+  saveBookings();
+  renderHomeGrid();
+
+  // 完了画面の参加者一覧
+  let participantHtml='';
+  for(let i=0;i<pCnt;i++){
+    const d=pData[i];
+    const ri=RANKS.find(rk=>rk.r===d.rank);
+    participantHtml+=`<div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px;">
+      <div style="font-weight:800;color:var(--navy);font-size:14px;margin-bottom:6px;">${d.name}</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <span style="background:var(--blue-light);color:var(--mid);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">${d.gender}</span>
+        <span style="background:var(--blue-light);color:var(--mid);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">${d.status}</span>
+        <span style="background:var(--blue-light);color:var(--mid);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">${d.area}</span>
+        <span style="background:${ri.bg};color:${ri.col};font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">RANK${d.rank} ${ri.name}</span>
+      </div>
+    </div>`;
+  }
+
+  document.getElementById('suc-det').innerHTML=`
+    <div class="cf-row"><span class="cf-k">イベント</span><span class="cf-v">${ev.name}</span></div>
+    <div class="cf-row"><span class="cf-k">日時</span><span class="cf-v">${fmtDate(ev.date)} ${ev.time}</span></div>
+    <div class="cf-row"><span class="cf-k">会場</span><span class="cf-v">${ev.venue}</span></div>
+    <div class="cf-row"><span class="cf-k">参加人数</span><span class="cf-v">${pCnt}名</span></div>
+    <div class="cf-row"><span class="cf-k">合計金額</span><span class="cf-v" style="color:var(--mid);font-size:18px;font-weight:900;">¥${final.toLocaleString()}</span></div>
+    ${noteVal?`<div class="cf-row"><span class="cf-k">備考</span><span class="cf-v" style="font-weight:500;white-space:pre-wrap;">${noteVal}</span></div>`:''}
+    <div style="margin-top:14px;"><div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--mid);margin-bottom:8px;text-transform:uppercase;">参加者</div>${participantHtml}</div>`;
+
+  document.getElementById('step1').style.display='none';
+  document.getElementById('step2').style.display='none';
+  document.getElementById('step3').style.display='block';
+  updDots(3);window.scrollTo({top:0,behavior:'instant'});
+}
+
+function updDots(a){
+  [1,2,3].forEach(n=>{
+    const d=document.getElementById('sd'+n);
+    d.className='sdot'+(n<a?' dn':n===a?' on':'');
+    d.textContent=n<a?'✓':n;
+    if(n<3)document.getElementById('sl'+n).className='s-line'+(n<a?' dn':'');
+  });
+}
+
+// ===== RANK =====
+function renderRankPage(){
+  document.getElementById('rank-display').innerHTML=RANKS.map(rk=>`
+    <div class="rk-card">
+      <div class="rk-card-hd">
+        <div class="rk-card-badge" style="background:${rk.bg};border:1px solid ${rk.col};width:48px;height:48px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-size:8px;font-weight:800;letter-spacing:1px;color:${rk.col};">RANK</span>
+          <span style="font-size:20px;font-weight:900;line-height:1.1;color:${rk.col};">${rk.r}</span>
+        </div>
+        <div>
+          <div class="rk-card-nm" style="color:${rk.col};">${rk.name}</div>
+          <div class="rk-card-sl">${rk.lbl}</div>
+          <div class="rk-card-st" style="color:${rk.col};">${rk.stars}</div>
+        </div>
+      </div>
+      <div class="rk-card-bd"><ul class="rk-card-ul">${rk.b.map(x=>`<li>${x}</li>`).join('')}</ul></div>
+    </div>`).join('');
+}
+
+// ===== ADMIN =====
+function doLogin(){
+  const pw=document.getElementById('apw').value;
+  const err=document.getElementById('l-err');
+  if(pw===ADM_PW){
+    err.style.display='none';
+    document.getElementById('apw').value='';
+    navToPage('adm-panel');
+    const ss=document.getElementById('sync-status');
+    if(ss)ss.textContent=useCloud?'クラウド同期 ON — 全端末でデータ共有中':'ローカル保存モード — この端末のみ保存';
+    renderAdmEv();renderAdmBk();renderAlert();
+  }else{
+    err.style.display='block';
+    document.getElementById('apw').select();
+  }
+}
+function doLogout(){navToPage('adm-login');document.getElementById('apw').value='';}
+function switchTab(btn,secId){
+  document.querySelectorAll('.adm-tab').forEach(t=>t.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.adm-sec').forEach(s=>s.classList.remove('on'));
+  document.getElementById(secId).classList.add('on');
+  if(secId==='sec-bk'){renderAdmBk();clearNew();}
+  if(secId==='sec-ev')renderAdmEv();
+}
+function clearNew(){
+  bookings.forEach(b=>b.isNew=false);newBks.length=0;
+  saveBookings();
+  document.getElementById('notif-n').style.display='none';
+  document.getElementById('alert-area').innerHTML='';
+}
+function renderAlert(){
+  const area=document.getElementById('alert-area');
+  const nb=bookings.filter(b=>b.isNew);
+  const badge=document.getElementById('notif-n');
+  if(nb.length>0){
+    badge.textContent=nb.length;badge.style.display='inline-flex';
+    area.innerHTML=`<div class="alert-row">
+      <div class="alert-dot"></div>
+      <div><h4>新しい予約が${nb.length}件入っています</h4>
+      <p>${nb.map(b=>`${b.name}（${b.evName} ${fmtDate(b.evDate)}）`).join('、')}</p></div>
+    </div>`;
+  }else{badge.style.display='none';area.innerHTML='';}
+}
+function renderAdmEv(){
+  document.getElementById('ev-adm-list').innerHTML=events.map(ev=>{
+    const cap=getCap(ev.type,ev),rem=cap-ev.p;
+    return `<div class="ev-adm-card">
+      <div class="ev-adm-top">
+        <div>
+          <div class="ev-adm-nm">${tLabel(ev.type)} — ${ev.name}</div>
+          <div class="ev-adm-meta">${fmtDate(ev.date)} ${ev.time}  |  参加 ${ev.p}/${cap}名（残り${rem}枠）</div>
+        </div>
+        <div class="ev-adm-btns">
+          <button class="btn-ed" onclick="toggleEF(${ev.id})">編集</button>
+          <button class="btn-dl" onclick="delEv(${ev.id})">削除</button>
+        </div>
+      </div>
+      <div class="ev-edit-form" id="ef-${ev.id}">
+        <div style="font-size:11px;font-weight:800;letter-spacing:2px;color:var(--mid);margin-bottom:12px;text-transform:uppercase;">イベント情報を編集</div>
+        <div class="fg2">
+          <div class="fg"><label class="fl">イベント名</label><input class="fi" id="ef-nm-${ev.id}" value="${ev.name}"></div>
+          <div class="fg"><label class="fl">日付</label><input type="date" class="fi" id="ef-dt-${ev.id}" value="${ev.date}"></div>
+          <div class="fg"><label class="fl">時間</label><input class="fi" id="ef-tm-${ev.id}" value="${ev.time}"></div>
+          <div class="fg"><label class="fl">会場</label><input class="fi" id="ef-vn-${ev.id}" value="${ev.venue}"></div>
+          <div class="fg"><label class="fl">定員（名）</label><input type="number" class="fi" id="ef-cp-${ev.id}" value="${ev.customCap||getCap(ev.type,ev)}" min="1" max="200"></div>
+        </div>
+        <div class="btn-pair" style="margin-top:10px;">
+          <button class="btn-s" onclick="toggleEF(${ev.id})" style="flex:1;">キャンセル</button>
+          <button class="btn-p" onclick="saveEF(${ev.id})" style="flex:2;">保存する</button>
+        </div>
+      </div>
+      <div class="venue-row">
+        <span class="venue-lbl">会場</span>
+        <input class="venue-inp" id="vq-${ev.id}" value="${ev.venue}">
+        <button class="btn-sv" onclick="saveVQ(${ev.id})">更新</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function toggleEF(id){document.getElementById('ef-'+id).classList.toggle('open');}
+function saveEF(id){
+  const ev=events.find(e=>e.id===id);
+  ev.name=document.getElementById('ef-nm-'+id).value.trim()||ev.name;
+  ev.date=document.getElementById('ef-dt-'+id).value||ev.date;
+  ev.time=document.getElementById('ef-tm-'+id).value.trim()||ev.time;
+  ev.venue=document.getElementById('ef-vn-'+id).value.trim()||ev.venue;
+  const cp=parseInt(document.getElementById('ef-cp-'+id).value);
+  if(cp&&cp>0)ev.customCap=cp;
+  saveEvents();
+  renderAdmEv();renderHomeGrid();toast('イベントを更新しました');
+}
+function saveVQ(id){
+  const inp=document.getElementById('vq-'+id);
+  if(!inp.value.trim())return;
+  events.find(e=>e.id===id).venue=inp.value.trim();
+  saveEvents();
+  renderAdmEv();renderHomeGrid();toast('会場を更新しました');
+}
+function delEv(id){
+  if(!confirm('このイベントを削除しますか？'))return;
+  events=events.filter(e=>e.id!==id);
+  saveEvents();
+  renderAdmEv();renderHomeGrid();toast('削除しました');
+}
+let nfOpen=false;
+function toggleNF(){nfOpen=!nfOpen;document.getElementById('new-ev-form').classList.toggle('open',nfOpen);}
+function addEv(){
+  const name=document.getElementById('ne-name').value.trim();
+  const type=document.getElementById('ne-type').value;
+  const date=document.getElementById('ne-date').value;
+  const time=document.getElementById('ne-time').value.trim();
+  const venue=document.getElementById('ne-venue').value.trim();
+  if(!name||!date||!time||!venue){alert('すべての項目を入力してください');return;}
+  const newId=Math.max(...events.map(e=>e.id),0)+1;
+  events.push({id:newId,name,type,date,time,venue,p:0});
+  ['ne-name','ne-date','ne-time','ne-venue'].forEach(i=>document.getElementById(i).value='');
+  saveEvents();
+  toggleNF();renderAdmEv();renderHomeGrid();toast('イベントを作成しました');
+}
+function renderAdmBk(){
+  // 統計
+  document.getElementById('adm-stats').innerHTML=`
+    <div class="stat-cell"><div class="stat-n">${bookings.length}</div><div class="stat-l">総予約数</div></div>
+    <div class="stat-cell"><div class="stat-n">${events.length}</div><div class="stat-l">イベント数</div></div>
+    <div class="stat-cell"><div class="stat-n">${bookings.filter(b=>b.status==='社会人').length}</div><div class="stat-l">社会人</div></div>
+    <div class="stat-cell"><div class="stat-n">${bookings.filter(b=>b.status==='学生').length}</div><div class="stat-l">学生</div></div>
+    <div class="stat-cell"><div class="stat-n">${bookings.filter(b=>b.area==='盛岡市内').length}</div><div class="stat-l">市内</div></div>
+    <div class="stat-cell"><div class="stat-n">${bookings.filter(b=>b.area==='盛岡市外').length}</div><div class="stat-l">市外</div></div>`;
+
+  const bkArea = document.getElementById('bk-detail-area');
+  if(!bookings.length){
+    bkArea.innerHTML='<div style="text-align:center;padding:40px;color:var(--text3);background:var(--surface);border-radius:12px;border:1px solid var(--border);">まだ予約はありません</div>';
+    return;
+  }
+
+  // イベント別にグループ化
+  const evMap={};
+  [...bookings].forEach(b=>{
+    const key=b.evId+'_'+b.evDate;
+    if(!evMap[key]) evMap[key]={evId:b.evId,evName:b.evName,evDate:b.evDate,evTime:b.evTime,members:[]};
+    evMap[key].members.push(b);
+  });
+
+  bkArea.innerHTML=Object.values(evMap).sort((a,b)=>new Date(a.evDate)-new Date(b.evDate)).map(grp=>{
+    const hasNew=grp.members.some(m=>m.isNew);
+    const totalFee=grp.members.reduce((s,m)=>s+m.fee,0);
+    const memberCards=grp.members.map(b=>{
+      const ri=RANKS.find(rk=>rk.r===b.rank);
+      return `<div style="background:${b.isNew?'#f0fdf4':'var(--bg)'};border:1px solid ${b.isNew?'#86efac':'var(--border)'};border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:160px;">
+          <div style="font-weight:800;color:var(--navy);font-size:14px;margin-bottom:5px;">${b.name}${b.isNew?'<span class="new-tag" style="margin-left:6px;">NEW</span>':''}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span style="background:var(--blue-light);color:var(--mid);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">${b.gender}</span>
+            <span style="background:var(--blue-light);color:var(--mid);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">${b.status}</span>
+            <span style="background:var(--blue-light);color:var(--mid);font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">${b.area}</span>
+            <span style="background:${ri.bg};color:${ri.col};font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;">RANK${b.rank} ${ri.name}</span>
+          </div>
+          ${b.note?`<div style="margin-top:8px;font-size:12px;color:var(--text2);background:#fff;border:1px dashed var(--border2);border-radius:6px;padding:8px 12px;line-height:1.6;"><span style="font-weight:800;color:var(--mid);font-size:10px;letter-spacing:1px;">備考</span><br>${b.note}</div>`:''}
+        </div>
+        <div style="text-align:right;flex-shrink:0;">
+          <div style="font-size:15px;font-weight:900;color:var(--mid);">¥${b.fee.toLocaleString()}</div>
+          <div style="font-size:10px;color:var(--text3);margin-top:2px;">${b.bkDate}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div style="background:var(--surface);border:1px solid ${hasNew?'#86efac':'var(--border)'};border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow);">
+      <div style="background:linear-gradient(90deg,var(--navy),var(--blue));padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <div>
+          <div style="font-size:15px;font-weight:800;color:#fff;">${grp.evName}${hasNew?'<span style="background:#4ade80;color:#14532d;font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;margin-left:8px;">NEW予約あり</span>':''}</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px;">${fmtDate(grp.evDate)} ${grp.evTime}</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:20px;font-weight:900;color:#60a5fa;">${grp.members.length}名</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.5);">合計 ¥${totalFee.toLocaleString()}</div>
+        </div>
+      </div>
+      <div style="padding:14px;">${memberCards}</div>
+    </div>`;
+  }).join('');
+}
+function toast(msg){
+  const t=document.createElement('div');
+  t.textContent=msg;
+  t.style.cssText='position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--mid);color:#fff;padding:11px 22px;border-radius:8px;font-size:13px;font-weight:700;box-shadow:0 6px 20px rgba(26,86,219,.35);z-index:9999;white-space:nowrap;';
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),2500);
+}
+
+// ===== クラウド同期（数秒ごとに自動で最新データを取得） =====
+function normArr(v){return Array.isArray(v)?v.filter(Boolean):(v?Object.values(v):[]);}
+function syncFromCloud(){
+  cloudGet('events').then(function(v){
+    if(v===null||v===undefined)return;
+    const j=JSON.stringify(v);
+    if(j===lastEvJson)return;
+    lastEvJson=j;
+    events=normArr(v);
+    renderHomeGrid();renderEvList();
+    const editing=document.querySelector('.ev-edit-form.open');
+    if(document.getElementById('adm-panel').classList.contains('on')&&!editing)renderAdmEv();
+  });
+  cloudGet('bookings').then(function(v){
+    const j=JSON.stringify(v||{});
+    if(j===lastBkJson)return;
+    lastBkJson=j;
+    bookings=normArr(v).sort(function(a,b){return(a.id||0)-(b.id||0);});
+    if(document.getElementById('adm-panel').classList.contains('on')){renderAdmBk();renderAlert();}
+  });
+}
+
+// INIT
+loadBookings();
+if(useCloud){
+  cloudGet('events').then(function(v){
+    function start(){syncFromCloud();setInterval(syncFromCloud,2000);}
+    if(v===null||v===undefined){cloudSet('events',DEFAULT_EVENTS).then(start);}
+    else{start();}
+  });
+}
+renderHomeGrid();
+renderRankPage();
+</script>
+</body>
+</html>
